@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blog_quotes",
+  "info": {
+    "displayName": "Quote",
+    "icon": "quote-right",
+    "description": "Quote block with author attribution"
+  },
+  "options": {},
+  "attributes": {
+    "quote": {
+      "type": "text",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "source": {
+      "type": "string",
+      "maxLength": 200
+    }
+  }
+}

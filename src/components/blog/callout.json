@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blog_callouts",
+  "info": {
+    "displayName": "Callout",
+    "icon": "exclamation-circle",
+    "description": "Callout box for tips, warnings, or important information"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": ["info", "tip", "warning", "danger"],
+      "default": "info",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blog_card_items",
+  "info": {
+    "displayName": "Card Item",
+    "icon": "square"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "text"
+    },
+    "items": {
+      "type": "json"
+    }
+  }
+}

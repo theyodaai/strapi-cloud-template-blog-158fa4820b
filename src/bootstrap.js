@@ -3,7 +3,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const mime = require('mime-types');
-const { categories, authors, articles, global, about } = require('../data/data.json');
+const { categories, authors, articles, global, about, tags } = require('../data/data.json');
 
 async function seedExampleApp() {
   const shouldImportSeedData = await isFirstRun();
@@ -98,12 +98,14 @@ async function uploadFile(file, name) {
 }
 
 // Create an entry and attach files if there are any
-async function createEntry({ model, entry }) {
+async function createEntry({ model, entry, publish = false }) {
   try {
     // Actually create the entry in Strapi
-    await strapi.documents(`api::${model}.${model}`).create({
+    const result = await strapi.documents(`api::${model}.${model}`).create({
       data: entry,
+      status: publish ? 'published' : 'draft',
     });
+    return result;
   } catch (error) {
     console.error({ model, entry, error });
   }
@@ -166,20 +168,29 @@ async function updateBlocks(blocks) {
   return updatedBlocks;
 }
 
+async function importTags() {
+  for (const tag of tags) {
+    await createEntry({ model: 'tag', entry: tag });
+  }
+}
+
 async function importArticles() {
   for (const article of articles) {
     const cover = await checkFileExistsBeforeUpload([`${article.slug}.jpg`]);
     const updatedBlocks = await updateBlocks(article.blocks);
 
+    // Remove tags array from article data as we handle relations separately
+    const { tags: articleTags, ...articleData } = article;
+
     await createEntry({
       model: 'article',
       entry: {
-        ...article,
+        ...articleData,
         cover,
         blocks: updatedBlocks,
-        // Make sure it's not a draft
-        publishedAt: Date.now(),
+        tags: articleTags, // Connect tags by their IDs
       },
+      publish: true,
     });
   }
 }
@@ -192,13 +203,12 @@ async function importGlobal() {
     entry: {
       ...global,
       favicon,
-      // Make sure it's not a draft
-      publishedAt: Date.now(),
       defaultSeo: {
         ...global.defaultSeo,
         shareImage,
       },
     },
+    publish: true,
   });
 }
 
@@ -210,9 +220,8 @@ async function importAbout() {
     entry: {
       ...about,
       blocks: updatedBlocks,
-      // Make sure it's not a draft
-      publishedAt: Date.now(),
     },
+    publish: true,
   });
 }
 
@@ -242,6 +251,7 @@ async function importSeedData() {
     article: ['find', 'findOne'],
     category: ['find', 'findOne'],
     author: ['find', 'findOne'],
+    tag: ['find', 'findOne'],
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
   });
@@ -249,6 +259,7 @@ async function importSeedData() {
   // Create all entries
   await importCategories();
   await importAuthors();
+  await importTags();
   await importArticles();
   await importGlobal();
   await importAbout();

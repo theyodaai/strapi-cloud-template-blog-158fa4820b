@@ -27,38 +27,95 @@
       }
     ]
   },
+  "tags": [
+    {
+      "name": "JavaScript",
+      "slug": "javascript",
+      "description": "Articles related to JavaScript programming",
+      "color": "#F7DF1E"
+    },
+    {
+      "name": "Tutorial",
+      "slug": "tutorial",
+      "description": "Step-by-step guides and tutorials",
+      "color": "#10B981"
+    },
+    {
+      "name": "Beginner",
+      "slug": "beginner",
+      "description": "Content suitable for beginners",
+      "color": "#3B82F6"
+    },
+    {
+      "name": "Advanced",
+      "slug": "advanced",
+      "description": "Advanced topics for experienced developers",
+      "color": "#EF4444"
+    },
+    {
+      "name": "Web Development",
+      "slug": "web-development",
+      "description": "Web development related content",
+      "color": "#8B5CF6"
+    },
+    {
+      "name": "API",
+      "slug": "api",
+      "description": "API design and development",
+      "color": "#F59E0B"
+    },
+    {
+      "name": "Database",
+      "slug": "database",
+      "description": "Database and data storage topics",
+      "color": "#06B6D4"
+    },
+    {
+      "name": "Opinion",
+      "slug": "opinion",
+      "description": "Opinion pieces and editorials",
+      "color": "#EC4899"
+    }
+  ],
   "categories": [
     {
       "name": "news",
-      "slug": "news"
+      "slug": "news",
+      "description": "Latest news and updates"
     },
     {
       "name": "tech",
-      "slug": "tech"
+      "slug": "tech",
+      "description": "Technology articles and reviews"
     },
     {
       "name": "food",
-      "slug": "food"
+      "slug": "food",
+      "description": "Food recipes and culinary content"
     },
     {
       "name": "nature",
-      "slug": "nature"
+      "slug": "nature",
+      "description": "Nature and environment topics"
     },
     {
       "name": "story",
-      "slug": "story"
+      "slug": "story",
+      "description": "Stories and narratives"
     }
   ],
   "authors": [
     {
       "name": "David Doe",
       "email": "daviddoe@strapi.io",
-      "avatar": "daviddoe@strapi.io.jpg"
+      "avatar": "daviddoe@strapi.io.jpg",
+      "bio": "David is a senior developer with over 10 years of experience in web development. He loves writing about technology and sharing knowledge with the community."
     },
     {
       "name": "Sarah Baker",
       "email": "sarahbaker@strapi.io",
-      "avatar": "sarahbaker@strapi.io.jpg"
+      "avatar": "sarahbaker@strapi.io.jpg",
+      "bio": "Sarah is a tech enthusiast and content creator. She specializes in making complex topics accessible to beginners."
     }
   ],
   "articles": [
@@ -71,8 +128,11 @@
       "author": {
         "id": 1
       },
+      "tags": [1, 5, 8],
       "description": "Follow the story of Aaron Swartz, the boy who could change the world",
       "cover": null,
+      "readTime": 8,
+      "featured": true,
       "blocks": [
         {
           "__component": "shared.rich-text",
@@ -106,8 +166,11 @@
       "author": {
         "id": 1
       },
+      "tags": [3],
       "description": "Mantis shrimps, or stomatopods, are marine crustaceans of the order Stomatopoda.",
       "cover": null,
+      "readTime": 5,
+      "featured": false,
       "blocks": [
         {
           "__component": "shared.rich-text",
@@ -141,8 +204,11 @@
       "author": {
         "id": 2
       },
+      "tags": [1, 7, 5],
       "description": "How a bug on MySQL is becoming a meme on the internet",
       "cover": null,
+      "readTime": 4,
+      "featured": true,
       "blocks": [
         {
           "__component": "shared.rich-text",
@@ -176,8 +242,11 @@
       "author": {
         "id": 2
       },
+      "tags": [3],
       "description": "Description of a beautiful picture",
       "cover": null,
+      "readTime": 3,
+      "featured": false,
       "blocks": [
         {
           "__component": "shared.rich-text",
@@ -211,8 +280,11 @@
       "author": {
         "id": 2
       },
+      "tags": [4, 8],
       "description": "Maybe the answer is in this article, or not...",
       "cover": null,
+      "readTime": 10,
+      "featured": false,
       "blocks": [
         {
           "__component": "shared.rich-text",

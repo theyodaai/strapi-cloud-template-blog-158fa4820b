@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_blog_cta_boxes",
+  "info": {
+    "displayName": "CTA Box",
+    "icon": "bullhorn"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "primaryButtonText": {
+      "type": "string"
+    },
+    "primaryButtonUrl": {
+      "type": "string"
+    },
+    "secondaryButtonText": {
+      "type": "string"
+    },
+    "secondaryButtonUrl": {
+      "type": "string"
+    }
+  }
+}
